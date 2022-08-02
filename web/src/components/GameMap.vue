@@ -5,7 +5,6 @@
     </div>
 </template>
 
-
 <script>
 import { GameMap } from "@/assets/scripts/GameMap";
 import { ref, onMounted } from 'vue'
