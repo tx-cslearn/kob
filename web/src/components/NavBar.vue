@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <router-link class="navbar-brand" :to="{ name: 'home' }">King Of Bots</router-link>
             <div class="collapse navbar-collapse" id="navbarText">
@@ -25,7 +25,8 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li>
-                                <router-link class="dropdown-item" :to="{ name: 'user_bot_index' }">我的bots</router-link>
+
+                                <router-link class="dropdown-item" :to="{ name: 'user_bot_index' }">我的Bot</router-link>
                             </li>
                             <li>
                                 <hr class="dropdown-divider">
@@ -49,21 +50,23 @@
             </div>
         </div>
     </nav>
-
 </template>
 
 <script>
 import { useRoute } from 'vue-router'
-import { computed } from '@vue/reactivity'
+import { computed } from 'vue'
 import { useStore } from 'vuex';
+
 export default {
     setup() {
         const store = useStore();
         const route = useRoute();
         let route_name = computed(() => route.name)
+
         const logout = () => {
             store.dispatch("logout");
         }
+
         return {
             route_name,
             logout
