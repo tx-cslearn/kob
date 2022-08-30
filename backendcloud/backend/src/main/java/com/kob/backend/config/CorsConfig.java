@@ -1,10 +1,11 @@
 package com.kob.backend.config;
-        import org.springframework.context.annotation.Configuration;
 
-        import javax.servlet.*;
-        import javax.servlet.http.HttpServletRequest;
-        import javax.servlet.http.HttpServletResponse;
-        import java.io.IOException;
+import org.springframework.context.annotation.Configuration;
+
+import javax.servlet.*;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 @Configuration
 public class CorsConfig implements Filter {

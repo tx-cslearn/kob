@@ -28,4 +28,3 @@ public class InfoServiceImpl implements InfoService {
         return map;
     }
 }
-

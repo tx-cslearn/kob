@@ -12,16 +12,19 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
+
     @Autowired
     private UserMapper userMapper;
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        QueryWrapper<User> qc = new QueryWrapper<>();
-        qc.eq("username",username);
-        User user = userMapper.selectOne(qc);
-        if(user==null){
-            throw new RuntimeException("user不存在");
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("username", username);
+        User user = userMapper.selectOne(queryWrapper);
+        if (user == null) {
+            throw new RuntimeException("用户不存在");
         }
+
         return new UserDetailsImpl(user);
     }
 }

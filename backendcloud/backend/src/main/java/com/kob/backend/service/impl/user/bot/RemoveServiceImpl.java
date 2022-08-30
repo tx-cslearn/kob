@@ -12,10 +12,12 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Map;
+
 @Service
 public class RemoveServiceImpl implements RemoveService {
     @Autowired
     private BotMapper botMapper;
+
     @Override
     public Map<String, String> remove(Map<String, String> data) {
         UsernamePasswordAuthenticationToken authenticationToken =
@@ -25,20 +27,21 @@ public class RemoveServiceImpl implements RemoveService {
 
         int bot_id = Integer.parseInt(data.get("bot_id"));
         Bot bot = botMapper.selectById(bot_id);
+        Map<String, String> map = new HashMap<>();
 
-        Map<String ,String > map = new HashMap<>();
-        if(bot == null){
-            map.put("error_message","bot已被删除或者不存在");
+        if (bot == null) {
+            map.put("error_message", "Bot不存在或已被删除");
             return map;
         }
 
-        if(!bot.getUserId().equals(user.getId())){
-            map.put("error_message","没有权限删除");
+        if (!bot.getUserId().equals(user.getId())) {
+            map.put("error_message", "没有权限删除该Bot");
             return map;
         }
 
         botMapper.deleteById(bot_id);
-        map.put("error_message","success");
+
+        map.put("error_message", "success");
         return map;
     }
 }

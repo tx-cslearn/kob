@@ -12,19 +12,22 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public class GetListServiceImpl implements GetListService {
     @Autowired
     private BotMapper botMapper;
+
     @Override
-    public List<Bot> getlist() {
+    public List<Bot> getList() {
         UsernamePasswordAuthenticationToken authenticationToken =
                 (UsernamePasswordAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
         UserDetailsImpl loginUser = (UserDetailsImpl) authenticationToken.getPrincipal();
         User user = loginUser.getUser();
 
-        QueryWrapper<Bot> qc = new QueryWrapper<>();
-        qc.eq("user_id",user.getId());
-        return botMapper.selectList(qc);
+        QueryWrapper<Bot> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("user_id", user.getId());
+
+        return botMapper.selectList(queryWrapper);
     }
 }
