@@ -19,8 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 
-@SpringBootTest
-@AutoConfigureMockMvc
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class KobApplicationTests {
 
     private RecordMapper recordMapper;

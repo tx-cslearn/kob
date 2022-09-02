@@ -6,14 +6,14 @@
                     <img :src="$store.state.user.photo" alt="">
                 </div>
                 <div class="user-username">
-                    {{  $store.state.user.username  }}
+                    {{ $store.state.user.username }}
                 </div>
             </div>
             <div class="col-4">
                 <div class="user-select-bot">
                     <select v-model="select_bot" class="form-select" aria-label="Default select example">
                         <option value="-1" selected>亲自出马</option>
-                        <option v-for="bot in bots" :key="bot.id" :value="bot.id">{{  bot.title  }}</option>
+                        <option v-for="bot in bots" :key="bot.id" :value="bot.id">{{ bot.title }}</option>
                     </select>
                 </div>
             </div>
@@ -22,12 +22,12 @@
                     <img :src="$store.state.pk.opponent_photo" alt="">
                 </div>
                 <div class="user-username">
-                    {{  $store.state.pk.opponent_username  }}
+                    {{ $store.state.pk.opponent_username }}
                 </div>
             </div>
             <div class="col-12" style="text-align:center;padding-top:15vh;">
                 <button @click="click_match_btn" type="button" class="btn btn-warning btn-lg">
-                    {{  match_btn_info  }}
+                    {{ match_btn_info }}
                 </button>
             </div>
         </div>
@@ -61,7 +61,7 @@ export default {
 
         const refresh_bots = () => {
             $.ajax({
-                url: "http://127.0.0.1:3000/user/bot/getlist/",
+                url: "https://app2552.acapp.acwing.com.cn/api/user/bot/getlist/",
                 type: "get",
                 headers: {
                     Authorization: "Bearer " + store.state.user.token,
